@@ -1,36 +1,43 @@
 {
-  "name": "ts-node-boilerplate",
+  "name": "wti",
   "version": "0.0.0",
-  "description": "",
+  "description": "A WebTranslateIt command-line tool in Node.js",
+  "keywords": [
+    "wti",
+    "cli",
+    "webtranslateit",
+    "i18n",
+    "i18next",
+    "translations"
+  ],
+  "homepage": "https://github.com/Pegase745/wti#readme",
+  "bugs": {
+    "url": "https://github.com/Pegase745/wti/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pegase745/wti.git"
+  },
+  "license": "MIT",
+  "author": "Michel Nemnom <1678801+Pegase745@users.noreply.github.com>",
   "main": "dist/index.js",
-  "preferGlobal": true,
+  "bin": {
+    "wti": "bin/wti"
+  },
   "files": [
     "dist"
   ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Pegase745/ts-node-boilerplate.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Pegase745/ts-node-boilerplate/issues"
-  },
-  "homepage": "https://github.com/Pegase745/ts-node-boilerplate#readme",
-  "engines": {
-    "node": ">= 8.0.0"
-  },
-  "keywords": [],
-  "author": "Michel Nemnom <1678801+Pegase745@users.noreply.github.com>",
-  "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf dist",
     "build": "tsc",
     "commit": "git-cz",
     "dev": "ts-node src/index.ts",
     "lint": "eslint . --ext .ts",
-    "prebuild": "rimraf dist",
     "prepublishOnly": "yarn build",
-    "test": "jest",
     "prerelease": "yarn build",
     "release": "semantic-release",
+    "start": "./bin/wti",
+    "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "husky": {
@@ -43,9 +50,6 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
@@ -75,5 +79,12 @@
     "ts-jest": "^26.1.0",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.5"
+  },
+  "engines": {
+    "node": ">= 8.0.0"
+  },
+  "preferGlobal": true,
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
