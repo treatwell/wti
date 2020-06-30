@@ -1,6 +1,6 @@
 {
   "name": "wti",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A WebTranslateIt command-line tool in Node.js",
   "keywords": [
     "wti",
