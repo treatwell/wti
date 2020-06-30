@@ -1,3 +1,11 @@
+## [1.1.4](https://github.com/Pegase745/wti/compare/v1.1.3...v1.1.4) (2020-06-30)
+
+
+### Bug Fixes
+
+* **release:** remove duplicate release step from CI ([07121d0](https://github.com/Pegase745/wti/commit/07121d0400a026a233d027769e087738874d7fa3))
+* **release:** try again a fix for the release ([b8aacf0](https://github.com/Pegase745/wti/commit/b8aacf093f8a753e8ed46c62d55187c04dca9def))
+
 ## [1.1.3](https://github.com/Pegase745/wti/compare/v1.1.2...v1.1.3) (2020-06-30)
 
 
