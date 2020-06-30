@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/Pegase745/wti/compare/v1.1.1...v1.1.2) (2020-06-30)
+
+
+### Bug Fixes
+
+* **release:** fix release by creating a new separate step in CI ([57feaf8](https://github.com/Pegase745/wti/commit/57feaf88b4fcae455ad3b8d624ced8925bbb5c4a))
+
 ## [1.1.1](https://github.com/Pegase745/wti/compare/v1.1.0...v1.1.1) (2020-06-30)
 
 
