@@ -23,12 +23,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: yarn
-      - run: yarn build
-      - run: yarn test
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
       - name: Release package
         if: github.ref == 'refs/heads/master'
-        run: yarn release
+        run: npm run release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

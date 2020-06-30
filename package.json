@@ -32,15 +32,16 @@
     "build": "tsc",
     "commit": "git-cz",
     "lint": "eslint . --ext .ts",
-    "prepublishOnly": "yarn build",
-    "prerelease": "yarn build",
+    "prepack": "yarn import",
+    "prepublishOnly": "npm run build",
+    "prerelease": "npm run build",
     "release": "semantic-release",
     "test": "jest",
     "test:coverage": "jest --coverage"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged",
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },

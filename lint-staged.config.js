@@ -6,6 +6,6 @@ module.exports = {
       `eslint --quiet --fix ${spaceSeparatedFilenames}`,
     ];
   },
-  '*.json': ['prettier --write'],
+  '!(*package-lock).json': ['prettier --write'],
   'package.json': ['sort-package-json'],
 };
