@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/Pegase745/wti/compare/v1.1.0...v1.1.1) (2020-06-30)
+
+
+### Bug Fixes
+
+* bundle `yarn.lock` and `package-lock.json` for compatibility ([4fd16ad](https://github.com/Pegase745/wti/commit/4fd16adaa23ffbf6fe666512b33fc41953b3944c)), closes [#5](https://github.com/Pegase745/wti/issues/5)
+
 # [1.1.0](https://github.com/Pegase745/wti/compare/v1.0.0...v1.1.0) (2020-06-30)
 
 
