@@ -35,28 +35,52 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
-      - run: npm ci
-      - run: npm run lint
-      - run: npm test
+      - run: yarn
+      - run: yarn lint
+      - run: yarn test
 
       - name: Release package
         if: github.ref == 'refs/heads/master'
-        run: npm run release
+        run: yarn release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   Release:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
     needs: Test
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - run: npm ci
-      - run: npm run release
+      - run: yarn
+      - run: yarn build
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        with:
+          branches: |
+            [
+              '+([0-9])?(.{+([0-9]),x}).x',
+              'master',
+              'next',
+              'next-major',
+              {
+                name: 'beta',
+                prerelease: true
+              },
+              {
+                name: 'alpha',
+                prerelease: true
+              }
+            ]
+          extra_plugins: |
+            '@semantic-release/commit-analyzer'
+            '@semantic-release/release-notes-generator'
+            '@semantic-release/changelog'
+            '@semantic-release/npm'
+            '@semantic-release/git'
+            '@semantic-release/github'
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

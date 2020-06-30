@@ -2,7 +2,7 @@
 
 > A WebTranslateIt command-line tool in Node.js.
 
-[![npm version](https://flat.badgen.net/npm/v/wti)](https://www.npmjs.com/package/wti)
+[![npm](https://img.shields.io/npm/v/wti?style=flat-square)](https://www.npmjs.com/package/wti)
 [![build status](https://github.com/Pegase745/wti/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/Pegase745/wti/actions)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
