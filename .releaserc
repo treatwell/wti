@@ -14,7 +14,6 @@
       {
         "assets": [
           "package.json",
-          "package-lock.json",
           "CHANGELOG.md"
         ],
         "message": "chore(release): version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
