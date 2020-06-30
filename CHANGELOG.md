@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/Pegase745/wti/compare/v1.1.2...v1.1.3) (2020-06-30)
+
+
+### Bug Fixes
+
+* **release:** try again to fix the release from CI ([1951d3d](https://github.com/Pegase745/wti/commit/1951d3d0023d47dda40daafdf8cb3e2b621c8310))
+
 ## [1.1.2](https://github.com/Pegase745/wti/compare/v1.1.1...v1.1.2) (2020-06-30)
 
 
