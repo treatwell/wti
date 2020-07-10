@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/treatwell/wti/compare/v1.1.4...v1.2.0) (2020-07-10)
+
+
+### Features
+
+* transfer under Treatwell as a scoped package ([5da4b3e](https://github.com/treatwell/wti/commit/5da4b3ef43abf98e7cea0aaa57b1e65542d6cfca))
+
 ## [1.1.4](https://github.com/Pegase745/wti/compare/v1.1.3...v1.1.4) (2020-06-30)
 
 
