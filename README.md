@@ -15,7 +15,7 @@
 **Installation**
 
 ```sh
-$ yarn global add wti
+$ yarn global add @treatwell/wti
 ```
 
 **Configuration**

@@ -1,5 +1,5 @@
 {
-  "name": "wti",
+  "name": "@treatwell/wti",
   "version": "1.1.4",
   "description": "A WebTranslateIt command-line tool in Node.js",
   "keywords": [
@@ -10,16 +10,19 @@
     "i18next",
     "translations"
   ],
-  "homepage": "https://github.com/Pegase745/wti#readme",
+  "homepage": "https://github.com/treatwell/wti#readme",
   "bugs": {
-    "url": "https://github.com/Pegase745/wti/issues"
+    "url": "https://github.com/treatwell/wti/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Pegase745/wti.git"
+    "url": "git+https://github.com/treatwell/wti.git"
   },
   "license": "MIT",
-  "author": "Michel Nemnom <1678801+Pegase745@users.noreply.github.com>",
+  "author": "Treatwell <opensource@treatwell.com>",
+  "contributors": [
+    "Michel Nemnom <1678801+Pegase745@users.noreply.github.com>"
+  ],
   "main": "dist/index.js",
   "bin": {
     "wti": "bin/wti"
@@ -95,6 +98,7 @@
   },
   "preferGlobal": true,
   "publishConfig": {
+    "access": "public",
     "registry": "https://registry.npmjs.org"
   },
   "importSort": {
