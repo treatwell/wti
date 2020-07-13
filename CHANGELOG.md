@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/treatwell/wti/compare/v1.2.0...v1.3.0) (2020-07-13)
+
+
+### Features
+
+* **push:** add new options to the push command ([5f3f64f](https://github.com/treatwell/wti/commit/5f3f64fd1f30754ad47a28263b283ec4e9f50360))
+
 # [1.2.0](https://github.com/treatwell/wti/compare/v1.1.4...v1.2.0) (2020-07-10)
 
 
