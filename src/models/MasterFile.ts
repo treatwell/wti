@@ -79,13 +79,30 @@ export class MasterFile {
     }
   }
 
-  async update(name: string, locale: string) {
+  async update(
+    name: string,
+    locale: string,
+    options: {
+      merge: boolean;
+      'ignore-missing': boolean;
+      label?: string;
+    }
+  ) {
     try {
       const file = fs.createReadStream(process.cwd() + `/${name}`);
 
       const formData = new FormData();
       formData.append('file', file);
       formData.append('name', name);
+      if (options.merge) {
+        formData.append('merge', 'true');
+      }
+      if (options['ignore-missing']) {
+        formData.append('ignore_missing', 'true');
+      }
+      if (options.label) {
+        formData.append('label', options.label);
+      }
 
       await wtiPut(`/files/${this._masterFileId}/locales/${locale}`, formData);
     } catch (err) {
