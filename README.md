@@ -1,14 +1,18 @@
-# wti
+<div align="center">
+    
+#### A [WebTranslateIt](https://webtranslateit.com/) command-line tool in Node.js by
 
-> A WebTranslateIt command-line tool in Node.js.
+[![](https://cdn1.treatwell.net/images/view/v2.i1756348.w200.h50.x4965194E.jpeg)](https://treatwell.com/tech)
 
-[![npm](https://img.shields.io/npm/v/wti?style=flat-square)](https://www.npmjs.com/package/wti)
-[![build status](https://github.com/Pegase745/wti/workflows/Node.js%20CI/badge.svg?branch=master)](https://github.com/Pegase745/wti/actions)
+[![npm](https://img.shields.io/npm/v/@treatwell/wti?style=flat-square)](https://www.npmjs.com/package/@treatwell/wti)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/treatwell/wti/Node.js%20CI?style=flat-square)](https://github.com/treatwell/wti/actions)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
 ![screenshot](screenshot.png 'How to use wti')
+
+</div>
 
 # Usage
 
