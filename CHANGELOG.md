@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/treatwell/wti/compare/v1.3.0...v1.3.1) (2020-07-17)
+
+
+### Bug Fixes
+
+* **pull:** replace null values with empty strings in nested keys ([2637354](https://github.com/treatwell/wti/commit/2637354a0bbaa44acb6179476f1c3b020f8a8f43)), closes [#11](https://github.com/treatwell/wti/issues/11)
+
 # [1.3.0](https://github.com/treatwell/wti/compare/v1.2.0...v1.3.0) (2020-07-13)
 
 
