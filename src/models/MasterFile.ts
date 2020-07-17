@@ -12,7 +12,7 @@ import {
 import { WTIProjectFile } from './types';
 
 type Translations = {
-  [key: string]: string;
+  [key: string]: Translations | string;
 };
 
 const writeTranslations = (path: fs.PathLike, data: string) =>
@@ -22,6 +22,24 @@ const writeTranslations = (path: fs.PathLike, data: string) =>
       else resolve();
     });
   });
+
+const replaceNullValues = (data: Translations) => {
+  const newData: Translations = {};
+
+  Object.keys(data)
+    .sort()
+    .forEach(function (key) {
+      if (data[key] === null) {
+        newData[key] = '';
+      } else if (typeof data[key] === 'object') {
+        newData[key] = replaceNullValues(data[key] as Translations);
+      } else {
+        newData[key] = data[key];
+      }
+    });
+
+  return newData;
+};
 
 export class MasterFile {
   private _masterFileId: number;
@@ -64,15 +82,10 @@ export class MasterFile {
 
       const result = (await response.json()) as Translations;
 
-      const data: Translations = {};
-
-      Object.keys(result)
-        .sort()
-        .forEach(function (key) {
-          data[key] = result[key] === null ? '' : result[key];
-        });
-
-      await writeTranslations(file.name, JSON.stringify(data, null, 2));
+      await writeTranslations(
+        file.name,
+        JSON.stringify(replaceNullValues(result), null, 2)
+      );
     } catch (err) {
       console.error(String(err));
       process.exit(1);
