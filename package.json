@@ -49,6 +49,9 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "resolutions": {
+    "dot-prop": "^5.3.0"
+  },
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
