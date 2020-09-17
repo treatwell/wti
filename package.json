@@ -64,7 +64,7 @@
     "kleur": "^4.1.1",
     "listr": "^0.14.3",
     "make-error": "^1.3.6",
-    "node-fetch": "3.0.0-beta.7"
+    "node-fetch": "3.0.0-beta.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
