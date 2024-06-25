@@ -59,12 +59,10 @@
     "@oclif/plugin-not-found": "^1.2.4",
     "@oclif/plugin-warn-if-update-available": "^1.7.0",
     "cli-ux": "^5.5.0",
-    "form-data": "^3.0.0",
     "git-root-dir": "^1.0.2",
     "kleur": "^4.1.1",
     "listr": "^0.14.3",
-    "make-error": "^1.3.6",
-    "node-fetch": "3.0.0-beta.9"
+    "make-error": "^1.3.6"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
@@ -85,7 +83,6 @@
     "husky": "^4.3.0",
     "import-sort-cli": "^6.0.0",
     "import-sort-parser-typescript": "^6.0.0",
-    "import-sort-style-leboncoin": "^1.0.3",
     "jest": "^26.4.2",
     "jest-junit": "^11.1.0",
     "lint-staged": "^10.4.0",
@@ -97,7 +94,7 @@
     "typescript": "^4.0.2"
   },
   "engines": {
-    "node": ">= 8.0.0"
+    "node": ">= 18.0.0"
   },
   "preferGlobal": true,
   "publishConfig": {
@@ -106,8 +103,7 @@
   },
   "importSort": {
     ".ts": {
-      "parser": "typescript",
-      "style": "leboncoin"
+      "parser": "typescript"
     }
   },
   "oclif": {

@@ -21,6 +21,7 @@ node_modules/
 
 # Source
 .vscode
+.idea
 dist
 **/*.css
 !*.config.js

@@ -1,15 +1,14 @@
-import fs from 'fs';
-import FormData from 'form-data';
-
-import { MasterFileAlreadyExistsError } from '../errors';
 import {
-  wtiPost,
-  wtiPut,
+  WtiErrorResponse,
   wtiDelete,
   wtiGet,
-  WtiErrorResponse,
+  wtiPost,
+  wtiPut,
 } from '../helpers';
+
+import { MasterFileAlreadyExistsError } from '../errors';
 import { WTIProjectFile } from './types';
+import fs from 'fs';
 
 type Translations = {
   [key: string]: Translations | string;
@@ -52,13 +51,17 @@ export class MasterFile {
 
   public static async create(name: string) {
     try {
-      const file = fs.createReadStream(process.cwd() + `/${name}`);
+      const file = fs.readFileSync(process.cwd() + `/${name}`);
 
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', new Blob([file]), name);
       formData.append('name', name);
 
       const response = await wtiPost('/files', formData);
+      if (!response.ok) {
+        throw new Error(`Failed to push new master file: ${await response.text()}`);
+      }
+
       const fileId = await response.text();
 
       if (fileId) {
@@ -79,6 +82,9 @@ export class MasterFile {
       const response = await wtiGet(
         `/files/${this._masterFileId}/locales/${file.locale_code}`
       );
+      if (!response.ok) {
+        throw new Error(`Failed to get master file: ${await response.text()}`);
+      }
 
       const result = (await response.json()) as Translations;
 
@@ -102,10 +108,10 @@ export class MasterFile {
     }
   ) {
     try {
-      const file = fs.createReadStream(process.cwd() + `/${name}`);
+      const file = fs.readFileSync(process.cwd() + `/${name}`);
 
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('file', new Blob([file]), name);
       formData.append('name', name);
       if (options.merge) {
         formData.append('merge', 'true');
@@ -117,7 +123,10 @@ export class MasterFile {
         formData.append('label', options.label);
       }
 
-      await wtiPut(`/files/${this._masterFileId}/locales/${locale}`, formData);
+      const response = await wtiPut(`/files/${this._masterFileId}/locales/${locale}`, formData);
+      if (!response.ok) {
+        throw new Error(`Failed to get master file: ${await response.text()}`);
+      }
     } catch (err) {
       console.error(String(err));
       process.exit(1);
