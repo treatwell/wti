@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/treatwell/wti/compare/v1.3.1...v2.0.0) (2024-07-04)
+
+
+* feat!: replace node-fetch by fetch included with node ([5c42f14](https://github.com/treatwell/wti/commit/5c42f14914aa1364bce1847b37fb1dcd6ab4c95b))
+
+
+### BREAKING CHANGES
+
+* requires node >= 18
+
 ## [1.3.1](https://github.com/treatwell/wti/compare/v1.3.0...v1.3.1) (2020-07-17)
 
 
