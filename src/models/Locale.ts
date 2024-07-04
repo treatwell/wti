@@ -1,6 +1,4 @@
-import FormData from 'form-data';
-
-import { wtiPost, WtiErrorResponse, wtiDelete } from '../helpers';
+import { WtiErrorResponse, wtiDelete, wtiPost } from '../helpers';
 
 export class Locale {
   private _locale: string;
