@@ -1,7 +1,7 @@
-import cli from 'cli-ux';
 import { Command, flags } from '@oclif/command';
+import { MasterFile, Project } from '../models';
 
-import { Project, MasterFile } from '../models';
+import cli from 'cli-ux';
 
 export default class Push extends Command {
   static description = 'push master language file';
@@ -22,11 +22,16 @@ export default class Push extends Command {
       // may be reversed with --no-ignore-missing to obsolete missing strings
       allowNo: true,
     }),
+    configPath: flags.string({
+      name: 'configPath',
+      required: false,
+      description: 'Path to wti-config.json file. If not provided, default to git root directory.'
+    })
   };
 
   async run() {
-    const { projectFiles } = await Project.init();
-    const { flags } = this.parse(Push);
+    const { flags : { configPath, ...flags } } = this.parse(Push);
+    const { projectFiles } = await Project.init(configPath);
 
     let masterFile = projectFiles.filter(
       (file) => file.master_project_file_id === null
@@ -37,7 +42,8 @@ export default class Push extends Command {
     await new MasterFile(masterFile.id).update(
       masterFile.name,
       masterFile.locale_code,
-      flags
+      flags,
+      configPath
     );
 
     cli.action.stop(

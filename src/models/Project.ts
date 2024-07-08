@@ -1,4 +1,5 @@
-import { wtiGet, WtiErrorResponse } from '../helpers';
+import { WtiErrorResponse, wtiGet } from '../helpers';
+
 import type { WTIProject } from './types';
 
 export class Project {
@@ -10,10 +11,10 @@ export class Project {
     this._project = project;
   }
 
-  public static async init() {
+  public static async init(pathParam?: string) {
     if (!Project.instance) {
       try {
-        const response = await wtiGet('.json');
+        const response = await wtiGet('.json', pathParam);
 
         // Project exists
         if (response.status === 200) {

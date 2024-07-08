@@ -1,22 +1,31 @@
-import cli from 'cli-ux';
-import { Command } from '@oclif/command';
+import { Command, flags } from '@oclif/command';
+import { getConfig, initialConfig, updateConfig } from '../helpers';
 
 import { ConfigNotFoundError } from '../errors';
-import { getConfig, updateConfig, initialConfig } from '../helpers';
+import cli from 'cli-ux';
 
 export default class Init extends Command {
   static description = 'configure the project to sync with';
 
+  static flags = {
+    configPath: flags.string({
+      name: 'configPath',
+      required: false,
+      description: 'Path to wti-config.json file. If not provided, default to git root directory.'
+    })
+  };
+
   async run() {
+    const { flags: { configPath } } = this.parse(Init);
     let config = initialConfig;
 
     try {
       // get config object
-      config = await getConfig();
+      config = await getConfig(configPath);
     } catch (err) {
       // if it doesn't exist, create an empty one
       if (err instanceof ConfigNotFoundError) {
-        await updateConfig(config);
+        await updateConfig(config, configPath);
       }
     } finally {
       // if apiKey is set, ask if it's ok to override it
@@ -39,7 +48,7 @@ export default class Init extends Command {
         project: {
           apiKey,
         },
-      });
+      }, configPath);
 
       cli.action.stop();
     }

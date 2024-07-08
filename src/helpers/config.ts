@@ -1,12 +1,12 @@
-import fs from 'fs';
-import path from 'path';
-import gitRootDir from 'git-root-dir';
-
 import {
   ConfigNotFoundError,
-  NotGitDirectoryError,
   ConfigUpdateError,
+  NotGitDirectoryError,
 } from '../errors';
+
+import fs from 'fs';
+import gitRootDir from 'git-root-dir';
+import path from 'path';
 
 interface Config {
   project: {
@@ -22,14 +22,18 @@ export const initialConfig: Config = {
 
 /**
  * Return the path of the config file
+ *
+ * @param pathParam path to the config file if defined in the command. Overrides the default git root dir
  */
-export const getConfigPath = async () => {
+export const getConfigPath = async (pathParam?: string) => {
+  if (pathParam) {
+    return path.join(process.cwd(), pathParam);
+  }
+
   const rootDir = await gitRootDir(process.cwd());
 
   if (rootDir) {
-    const configFilePath = path.join(rootDir, CONFIG_NAME);
-
-    return Promise.resolve(configFilePath);
+    return path.join(rootDir, CONFIG_NAME);
   }
 
   throw new NotGitDirectoryError();
@@ -37,9 +41,11 @@ export const getConfigPath = async () => {
 
 /**
  * Return the config as a JSON object
+ *
+ * @param pathParam path to the config file if defined in the command. Overrides the default git root dir
  */
-export const getConfig = async () => {
-  const configPath = await getConfigPath();
+export const getConfig = async (pathParam?: string) => {
+  const configPath = await getConfigPath(pathParam);
 
   if (fs.existsSync(configPath)) {
     return (await require(configPath)) as Config;
@@ -52,9 +58,10 @@ export const getConfig = async () => {
  * Update the config object
  *
  * @param newConfig new config object to write to file
+ * @param pathParam path to the config file if defined in the command. Overrides the default git root dir
  */
-export const updateConfig = async (newConfig: Config) => {
-  const configPath = await getConfigPath();
+export const updateConfig = async (newConfig: Config, pathParam?: string) => {
+  const configPath = await getConfigPath(pathParam);
 
   fs.writeFile(configPath, JSON.stringify(newConfig, null, 2), (err) => {
     if (err) throw new ConfigUpdateError(String(err));
