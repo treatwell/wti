@@ -49,7 +49,7 @@ export class MasterFile {
     this._masterFileId = masterFileId;
   }
 
-  public static async create(name: string) {
+  public static async create(name: string, pathParam?: string) {
     try {
       const file = fs.readFileSync(process.cwd() + `/${name}`);
 
@@ -57,7 +57,7 @@ export class MasterFile {
       formData.append('file', new Blob([file]), name);
       formData.append('name', name);
 
-      const response = await wtiPost('/files', formData);
+      const response = await wtiPost('/files', formData, pathParam);
       if (!response.ok) {
         throw new Error(`Failed to push new master file: ${await response.text()}`);
       }
@@ -77,10 +77,11 @@ export class MasterFile {
     }
   }
 
-  async show(file: WTIProjectFile) {
+  async show(file: WTIProjectFile, pathParam?: string) {
     try {
       const response = await wtiGet(
-        `/files/${this._masterFileId}/locales/${file.locale_code}`
+        `/files/${this._masterFileId}/locales/${file.locale_code}`,
+        pathParam
       );
       if (!response.ok) {
         throw new Error(`Failed to get master file: ${await response.text()}`);
@@ -105,7 +106,8 @@ export class MasterFile {
       merge: boolean;
       'ignore-missing': boolean;
       label?: string;
-    }
+    },
+    pathParam?: string
   ) {
     try {
       const file = fs.readFileSync(process.cwd() + `/${name}`);
@@ -123,7 +125,7 @@ export class MasterFile {
         formData.append('label', options.label);
       }
 
-      const response = await wtiPut(`/files/${this._masterFileId}/locales/${locale}`, formData);
+      const response = await wtiPut(`/files/${this._masterFileId}/locales/${locale}`, formData, pathParam);
       if (!response.ok) {
         throw new Error(`Failed to get master file: ${await response.text()}`);
       }
@@ -133,11 +135,11 @@ export class MasterFile {
     }
   }
 
-  async remove() {
+  async remove(pathParam?: string) {
     try {
       // return 202 if success with empty body
       // return 404 with WtiErrorResponse if file not found
-      const response = await wtiDelete(`/files/${this._masterFileId}`);
+      const response = await wtiDelete(`/files/${this._masterFileId}`, pathParam);
 
       if (response.status !== 202) {
         const parsedResponse = (await response.json()) as WtiErrorResponse;

@@ -1,19 +1,28 @@
-import cli from 'cli-ux';
-import { Command } from '@oclif/command';
-import kleur from 'kleur';
+import { Command, flags } from '@oclif/command';
 
 import { Status as StatusModel } from '../models';
+import cli from 'cli-ux';
+import kleur from 'kleur';
 
 export default class Status extends Command {
   static description = 'fetch and display project statistics';
+
+  static flags = {
+    configPath: flags.string({
+      name: 'configPath',
+      required: false,
+      description: 'Path to wti-config.json file. If not provided, default to git root directory.'
+    })
+  };
 
   static usage = '$ wti status';
 
   async run() {
     cli.action.start(`Loading statistics...`);
+    const { flags: { configPath } } = this.parse(Status);
 
     try {
-      const stats = await new StatusModel().fetch();
+      const stats = await new StatusModel().fetch(configPath);
       cli.action.stop();
 
       const locales = Object.keys(stats);

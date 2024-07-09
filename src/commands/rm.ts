@@ -1,19 +1,28 @@
-import cli from 'cli-ux';
-import { Command } from '@oclif/command';
-import kleur from 'kleur';
-
+import { Command, flags } from '@oclif/command';
 import { MasterFile, Project } from '../models';
+
+import cli from 'cli-ux';
+import kleur from 'kleur';
 
 export default class Rm extends Command {
   static description = 'delete a master language file from a project';
 
   static args = [{ name: 'masterFile' }];
 
+  static flags = {
+    configPath: flags.string({
+      name: 'configPath',
+      required: false,
+      description: 'Path to wti-config.json file. If not provided, default to git root directory.'
+    })
+  };
+
   static usage = '$ wti rm locales/en/translation.json';
 
   async run() {
     const {
       args: { masterFile },
+      flags: { configPath }
     } = this.parse(Rm);
 
     // TODO: inquirer to list master language files
@@ -24,7 +33,7 @@ export default class Rm extends Command {
 
       if (remove) {
         cli.action.start(`Removing ${masterFile}..`);
-        const { projectMasterFiles } = await Project.init();
+        const { projectMasterFiles } = await Project.init(configPath);
 
         const masterFileResult = projectMasterFiles.find(
           (file) => file.name === masterFile
@@ -41,7 +50,7 @@ export default class Rm extends Command {
           process.exit(1);
         }
 
-        await new MasterFile(masterFileResult.id).remove();
+        await new MasterFile(masterFileResult.id).remove(configPath);
 
         cli.action.stop();
       }

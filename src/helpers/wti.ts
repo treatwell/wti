@@ -11,9 +11,10 @@ export type WtiErrorResponse = {
  * Send a GET request to the WTI API
  *
  * @param path path of the API call
+ * @param pathParam path where the config in located if defined in the command. Overrides the default git root dir
  */
-export const wtiGet = async (path: string) => {
-  const config = await getConfig();
+export const wtiGet = async (path: string, pathParam?: string) => {
+  const config = await getConfig(pathParam);
 
   return await fetch(
     `${WTI_API_URL}/${config.project.apiKey}${path}`
@@ -25,9 +26,10 @@ export const wtiGet = async (path: string) => {
  *
  * @param path path of the API call
  * @param data data to be sent in the request body
+ * @param pathParam path where the config in located if defined in the command. Overrides the default git root dir
  */
-export const wtiPost = async (path: string, data: BodyInit) => {
-  const config = await getConfig();
+export const wtiPost = async (path: string, data: BodyInit, pathParam?: string) => {
+  const config = await getConfig(pathParam);
 
   return fetch(
     `${WTI_API_URL}/${config.project.apiKey}${path}`,
@@ -43,9 +45,10 @@ export const wtiPost = async (path: string, data: BodyInit) => {
  *
  * @param path path of the API call
  * @param data data to be sent in the request body
+ * @param pathParam path where the config in located if defined in the command. Overrides the default git root dir
  */
-export const wtiPut = async (path: string, data: BodyInit) => {
-  const config = await getConfig();
+export const wtiPut = async (path: string, data: BodyInit, pathParam?: string) => {
+  const config = await getConfig(pathParam);
 
   return fetch(
     `${WTI_API_URL}/${config.project.apiKey}${path}`,
@@ -60,9 +63,10 @@ export const wtiPut = async (path: string, data: BodyInit) => {
  * Send a DELETE request to the WTI API
  *
  * @param path path of the API call
+ * @param pathParam path where the config in located if defined in the command. Overrides the default git root dir
  */
-export const wtiDelete = async (path: string) => {
-  const config = await getConfig();
+export const wtiDelete = async (path: string, pathParam?: string) => {
+  const config = await getConfig(pathParam);
 
   return fetch(
     `${WTI_API_URL}/${config.project.apiKey}${path}`,

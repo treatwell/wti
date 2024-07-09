@@ -1,10 +1,11 @@
-import type { Statistic } from '../models/types';
-import { wtiGet, WtiErrorResponse } from '../helpers';
+import { WtiErrorResponse, wtiGet } from '../helpers';
+
+import type { Statistic } from './types';
 
 export class Status {
-  async fetch() {
+  async fetch(pathParam?: string) {
     try {
-      const response = await wtiGet('/stats.json');
+      const response = await wtiGet('/stats.json', pathParam);
 
       if (response.status !== 200) {
         const parsedResponse = (await response.json()) as WtiErrorResponse;
