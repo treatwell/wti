@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/treatwell/wti/compare/v2.0.0...v2.1.0) (2024-07-09)
+
+
+### Features
+
+* add option to override default config file location ([e01767c](https://github.com/treatwell/wti/commit/e01767cade29c18f8fb1feb8943e99e40a8fa111))
+
 # [2.0.0](https://github.com/treatwell/wti/compare/v1.3.1...v2.0.0) (2024-07-04)
 
 
