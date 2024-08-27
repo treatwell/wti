@@ -19,12 +19,12 @@
 **Installation**
 
 ```sh
-$ yarn global add @treatwell/wti
+$ yarn add @treatwell/wti
 ```
 
 **Configuration**
 
-Basically, `wti` is to be run on a project root directory, and looks for a `wti-config.json` file containing your project's informations.
+Basically, `wti` is to be run on a project root directory, and looks for a `wti-config.json` file containing your project's information.
 
 The command `wti init` lets you create this file.
 
@@ -35,6 +35,13 @@ Initializing...... [SUCCESS] Project is initialized
 ```
 
 You can find the API token in your project settings.
+
+Note that if your config is in a different directory then you can pass this with
+`--configPath` to any command that needs it:
+
+```
+wti push --configFile ./config/wti-config.json
+```
 
 **Usage**
 
@@ -67,6 +74,10 @@ See `wti help <command>` for more information on a specific command.
 | wti addLocale fr                   | Add a new locale to the project       |
 | wti rmLocale fr                    | Remove a locale from the project      |
 | wti status                         | View project statistics               |
+
+# Overview
+
+![](./docs/wti-process.png)
 
 # i18next example
 
