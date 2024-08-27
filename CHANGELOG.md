@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/treatwell/wti/compare/v2.1.0...v2.1.1) (2024-08-27)
+
+
+### Bug Fixes
+
+* allow update of more than one master file ([f62ece6](https://github.com/treatwell/wti/commit/f62ece6f4c6f7067e7f6e799c82463885bf113be))
+
 # [2.1.0](https://github.com/treatwell/wti/compare/v2.0.0...v2.1.0) (2024-07-09)
 
 
