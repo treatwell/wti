@@ -94,7 +94,7 @@
     "typescript": "^4.0.2"
   },
   "engines": {
-    "node": ">= 18.0.0"
+    "node": ">= 20.0.0"
   },
   "preferGlobal": true,
   "publishConfig": {
@@ -117,5 +117,9 @@
     "warn-if-update-available": {
       "timeoutInDays": 7
     }
+  },
+  "volta": {
+    "node": "20.16.0",
+    "yarn": "1.22.22"
   }
 }
