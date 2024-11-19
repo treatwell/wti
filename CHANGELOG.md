@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/treatwell/wti/compare/v2.1.1...v2.1.2) (2024-11-19)
+
+
+### Bug Fixes
+
+* handle missing locale files when pulling ([71aa080](https://github.com/treatwell/wti/commit/71aa08028bcf8b7333b4b65de8ff738c7af45e27))
+
 ## [2.1.1](https://github.com/treatwell/wti/compare/v2.1.0...v2.1.1) (2024-08-27)
 
 
