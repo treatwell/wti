@@ -35,11 +35,17 @@ export default class Pull extends Command {
         }
         return acc.concat({
           title: `Pulling ${current.name}`,
-          task: async () =>
+          task: async (ctx, task) =>
             await new MasterFile(masterFileToUpdate?.id).show(
               current,
               configPath
-            ),
+            ).catch((error) => {
+              if (error.message.includes('no such file or directory')) {
+                task.skip(`${current.name} failed to pull: This locale file is missing locally. Skipping...`);
+              } else {
+                task.skip(`${current.name} failed to pull: ${error.message}: Skipping...`);
+              }
+            }),
         });
       }, [] as Listr.ListrTask<Listr.ListrContext>[])
     );
